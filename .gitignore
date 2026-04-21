@@ -1,1 +1,11 @@
 .DS_Store
+.idea/
+.vscode/
+node_modules/
+*.log
+*.tmp
+*.swp
+tmp/
+artifacts/
+button-position.png
+sample-page.html

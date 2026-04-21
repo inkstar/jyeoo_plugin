@@ -53,7 +53,7 @@ const TARGET_URL = 'https://www.jyeoo.com/math2/ques/topicsearchques';
         return rect.width > 0 && rect.height > 0;
       };
 
-      const nodes = Array.from(document.querySelectorAll('button, a, span, div, li, i, input[type="checkbox"]'))
+      return Array.from(document.querySelectorAll('button, a, span, div, li, i, input[type="checkbox"]'))
         .filter(isVisible)
         .map((node) => ({
           tag: node.tagName,
@@ -67,25 +67,9 @@ const TARGET_URL = 'https://www.jyeoo.com/math2/ques/topicsearchques';
           return /选题|试题篮|加入|paper|basket|add|select|choose/i.test(hay);
         })
         .slice(0, 80);
-
-      return nodes;
     });
 
     console.log(`candidate_summary=${JSON.stringify(candidateSummary)}`);
-
-    if (count > 0) {
-      await button.first().click({ force: true });
-      await page.waitForTimeout(2500);
-      console.log(`status_after_click=${await status.first().innerText()}`);
-    }
-
-    try {
-      const screenshotPath = `/tmp/jyeoo-plugin-test-${Date.now()}.png`;
-      await page.screenshot({ path: screenshotPath, fullPage: false, timeout: 8000 });
-      console.log(`screenshot=${screenshotPath}`);
-    } catch (error) {
-      console.log(`screenshot_error=${error.name || 'Error'}`);
-    }
   } finally {
     await context.close();
     fs.rmSync(USER_DATA_DIR, { recursive: true, force: true });
