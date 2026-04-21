@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "菁优网组卷助手",
+  "version": "0.1.0",
+  "description": "在菁优网题目选择页面注入全选按钮，便于快速组卷。",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.jyeoo.com/*",
+        "https://xyh.jyeoo.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
