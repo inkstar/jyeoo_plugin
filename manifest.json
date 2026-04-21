@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "菁优网组卷助手",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "在菁优网题目选择页面注入全选按钮，便于快速组卷。",
   "content_scripts": [
     {
